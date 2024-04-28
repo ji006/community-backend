@@ -47,7 +47,11 @@ const __dirname = path.resolve();
           }
         }
         find_user.nickname = req_user.nickname;
-    
+        let userprofile = req_user.profile.split(';')[0];
+        let check_profile = userprofile.split('/')[1];
+        if(check_profile != 'undefined'){
+        find_user.profile = req_user.profile;
+        }
         fs.writeFileSync(__dirname+"/models/userlist.json", JSON.stringify(response));
         return true;
       },
