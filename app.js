@@ -17,7 +17,10 @@ import path from 'path';
 const __dirname = path.resolve();
 
 // app.use('/community', express.static(__dirname+'/community'));
+import bodyParser from "body-parser"
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.use(cors(corsOptions));
 
