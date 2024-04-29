@@ -33,13 +33,13 @@ export const postModel = {
       page.id = 1;
     }
     page.writetime=getFormattedDateTime();
-///////////
+
     let pageimg = page.post_image.split(';')[0];
         let check_img = pageimg.split('/')[1];
         if(check_img == 'undefined'){
           page.post_image = "";
         }
-/////////////
+
     datas.posts.push(page);
     fs.writeFileSync(__dirname+"/models/postlist.json", JSON.stringify(datas));
     return true;
@@ -69,6 +69,11 @@ export const postModel = {
     }
     find_post.title = req_post.title;
     find_post.post_text = req_post.post_text;
+    let pageimg = req_post.post_image.split(';')[0];
+    let check_img = pageimg.split('/')[1];
+    if(check_img != 'undefined'){
+      find_post.post_image = req_post.post_image;
+    }
     find_post.writetime = getFormattedDateTime();
 
     fs.writeFileSync(__dirname+"/models/postlist.json", JSON.stringify(response));
