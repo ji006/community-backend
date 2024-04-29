@@ -33,6 +33,13 @@ export const postModel = {
       page.id = 1;
     }
     page.writetime=getFormattedDateTime();
+///////////
+    let pageimg = page.post_image.split(';')[0];
+        let check_img = pageimg.split('/')[1];
+        if(check_img == 'undefined'){
+          page.post_image = "";
+        }
+/////////////
     datas.posts.push(page);
     fs.writeFileSync(__dirname+"/models/postlist.json", JSON.stringify(datas));
     return true;
