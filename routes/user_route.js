@@ -23,5 +23,9 @@ router.post("/join", (req, res) => {
   userController.createUser(req, res);
 });
 
+router.post("/login", (req, res) => {
+  userController.loginUser(req, res);
+});
+
 export default router;
 

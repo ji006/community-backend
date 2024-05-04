@@ -5,7 +5,6 @@ let corsOptions = {
   credential: true, // 사용자 인증이 필요한 리소스(쿠키 등) 접근
 }
 
-
 // express 모듈을 불러옵니다.
 import express from 'express';
 // express 애플리케이션을 생성합니다.
@@ -18,6 +17,15 @@ const __dirname = path.resolve();
 
 // app.use('/community', express.static(__dirname+'/community'));
 import bodyParser from "body-parser"
+
+import session from 'express-session';
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));

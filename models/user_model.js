@@ -8,6 +8,18 @@ const __dirname = path.resolve();
         // JSON 파일 읽기
         return jsonfile.readFile(__dirname+"/models/userlist.json");
       },
+      loginUser: async (email, password) => {
+        // JSON 파일 읽기
+        let datas = await jsonfile.readFile(__dirname+"/models/userlist.json");
+        let users = datas.users;
+        for (let i = 0; i < users.length; i++) {
+          const user = users[i];
+          if (user.email == email && user.password == password) {
+            return user;
+          }
+        }
+        return null;
+      },
       createUser: async (user) => {
         let response = await userModel.getUsers();
     
@@ -70,6 +82,6 @@ const __dirname = path.resolve();
     
         fs.writeFileSync(__dirname+"/models/userlist.json", JSON.stringify(response));
         return true;
-      }
+      },
   }
   
