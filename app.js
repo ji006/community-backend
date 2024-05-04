@@ -20,6 +20,9 @@ import bodyParser from "body-parser"
 
 import session from 'express-session';
 
+import cookieParser from "cookie-parser";
+app.use(cookieParser());
+
 app.use(session({
   secret: 'your-secret-key',
   resave: false,

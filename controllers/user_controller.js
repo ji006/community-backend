@@ -13,18 +13,12 @@ export const userController = {
       
       if(response != null){
         req.session.user = user.email;
+        res.cookie('email', user.email, {path:'/'});
       }else{
         req.session.user = null;
       }
       res.json(response);
     });
-    // 사용자 인증 로직 추가
-    // ...
-
-    // 인증이 성공하면 토큰 생성
-    // const token = createToken(user.id);
-    // res.cookie("token", token, { httpOnly: true });
-    // res.json({ message: "로그인 성공", token });
   },
 
   createUser: (req, res) => {
