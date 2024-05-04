@@ -3,6 +3,14 @@ const router = express.Router();
 
 import { postController } from "../controllers/post_controller.js";
 
+router.use('/*', (req, res, next)=>{
+  if(req.session.user==undefined){
+    res.status(401).json({ message: "로그인이 필요합니다" });
+  }else{
+    next();
+  }
+});
+
 // GET /posts
 router.get('/', (req, res) => {
   postController.getPosts(req, res);

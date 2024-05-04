@@ -13,7 +13,6 @@ export const userController = {
       
       if(response != null){
         req.session.user = user.email;
-        res.cookie('email', user.email, {path:'/'});
       }else{
         req.session.user = null;
       }
