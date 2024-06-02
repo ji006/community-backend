@@ -4,15 +4,16 @@ const router = express.Router();
 import { userController } from "../controllers/user_controller.js";
 
 router.use('/*', (req, res, next)=>{
-  if(req.originalUrl == '/users/login'){
-    next();    
-  }else{
-    if(req.session.user==undefined){
-      res.status(401).json({ message: "로그인이 필요합니다" });
-    }else{
-      next();
-    }
-  }
+  next();
+  // if(req.originalUrl == '/users/login'){
+  //   next();    
+  // }else{
+  //   if(req.session.user==undefined){
+  //     res.status(401).json({ message: "로그인이 필요합니다" });
+  //   }else{
+  //     next();
+  //   }
+  // }
 });
 // GET /posts
 router.get("/", (req, res) => {

@@ -16,6 +16,7 @@
     "express-session": "^1.18.0",
     "http-errors": "^2.0.0",
     "jsonfile": "^6.1.0",
+    "mysql2": "^3.10.0",
     "path": "^0.12.7"
   }
 }
